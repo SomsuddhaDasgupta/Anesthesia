@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anesthesia Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Anesthesia Dashboard</div>
+        <div class="profile">
+            <span>Dr. Chatterjee</span>
+            <img src="images/docx.jpg" alt="Profile Picture">
+        </div>
+    </header>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <label for="dark-mode">Dark Mode</label>
+        <input type="checkbox" id="dark-mode" onclick="toggleDarkMode()">
+    </div>
+
+    <!-- Main Section -->
+    <main>
+        <section class="patient-info">
+            <h2>Patient Information</h2>
+            <div class="info-card">
+                <div class="info-field">
+                    <label for="patient-name">Name:</label>
+                    <input type="text" id="patient-name" placeholder="Enter Name">
+                </div>
+                <div class="info-field">
+                    <label for="patient-age">Age:</label>
+                    <input type="number" id="age" placeholder="Enter age" oninput="validateAge()" required>
+                    <div id="age-error" class="error-message"></div> <!-- Error message for Age -->
+                </div>
+                <div class="info-field">
+                    <label for="patient-gender">Gender:</label>
+                    <select id="patient-gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="info-field">
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" placeholder="Enter weight" oninput="validateWeight()" required>
+                    <div id="weight-error" class="error-message"></div> <!-- Error message for Weight -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Health Data Section -->
+        <section class="health-data">
+            <h2>Health Data</h2>
+            <div class="health-cards">
+                <div class="health-card" id="condition">
+                    <label>Condition:</label>
+                    <span>Stable</span>
+                </div>
+                <div class="health-card" id="blood-pressure">
+                    <label>Blood Pressure:</label>
+                    <span>120/80 mmHg</span>
+                </div>
+                <div class="health-card" id="pulse-rate">
+                    <label>Pulse Rate:</label>
+                    <span>72 BPM</span>
+                </div>
+                <div class="health-card" id="oxygen-saturation">
+                    <label>Oxygen Saturation:</label>
+                    <span>98%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anesthesia Details Section -->
+        <section class="anesthesia-info">
+            <h2>Anesthesia Details</h2>
+            <form id="anesthesia-form" onsubmit="return validateForm()" name="submit-to-google-sheet">
+                <div class="form-field">
+                    <label for="body-part">Body Part for Dozing:</label>
+                    <select id="body-part">
+                        <option value="arm">Arm</option>
+                        <option value="leg">Leg</option>
+                        <option value="abdominal">Abdominal</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="type-of-anesthesia">Type of Anesthesia:</label>
+                    <select id="type-of-anesthesia">
+                        <option value="general">General</option>
+                        <option value="local">Local</option>
+                        <option value="regional">Regional</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="anesthetic-name">Name of Anesthesia:</label>
+                    <input type="text" id="anesthetic-name" placeholder="Enter anesthetic name">
+                </div>
+                <button type="submit" onclick="confirmAnesthesia()">Confirm Anesthesia</button>
+                
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
